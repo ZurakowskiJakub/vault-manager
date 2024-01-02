@@ -15,7 +15,7 @@ contract VaultManagerTest is Test {
         uint256 index = vaultManager.addVault();
 
         assertEq(index, 0);
-        assertEq(vaultManager.getVaultsLength, 1);
+        assertEq(vaultManager.getVaultsLength(), 1);
         assertEq(vaultManager.vaults[0].owner, msg.sender);
     }
 
