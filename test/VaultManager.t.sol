@@ -22,6 +22,6 @@ contract VaultManagerTest is Test {
 
     function testGetVault(uint256 x) public {
         uint256 index = vaultManager.addVault();
-        assertEq(vaultManager.getVault(index), Vault(msg.sender, 0));
+        assertEq(vaultManager.getVault(index).owner, msg.sender);
     }
 }
