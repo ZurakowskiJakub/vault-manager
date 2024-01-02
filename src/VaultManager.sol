@@ -13,7 +13,7 @@ contract VaultManager {
     event VaultWithdraw(uint256 _id, address owner, uint256 amount);
 
     modifier onlyOwner(uint256 vaultIndex) {
-        if (msg.sender != vaults[vaultIndex].owner) {
+        if (msg.sender != getVault(vaultIndex).owner) {
             revert("You are not the owner of this vault.");
         }
 
@@ -32,7 +32,7 @@ contract VaultManager {
     }
 
     function deposit(uint256 vaultIndex) public payable onlyOwner(vaultIndex) {
-        vaults[vaultIndex].balance += msg.value;
+        getVault(vaultIndex).balance += msg.value;
 
         emit VaultDeposit(vaultIndex, msg.sender, msg.value);
     }
@@ -41,7 +41,7 @@ contract VaultManager {
         uint256 vaultIndex,
         uint256 amount
     ) public onlyOwner(vaultIndex) {
-        if (vaults[vaultIndex].balance < amount) {
+        if (getVault(vaultIndex).balance < amount) {
             revert(
                 "You do not have sufficient balance to make this withdrawl."
             );
@@ -50,17 +50,15 @@ contract VaultManager {
         address payable to = payable(msg.sender);
         to.transfer(amount);
 
-        vaults[vaultIndex].balance -= amount;
+        getVault(vaultIndex).balance -= amount;
 
         emit VaultWithdraw(vaultIndex, msg.sender, amount);
     }
 
-    function getVault(
-        uint256 vaultIndex
-    ) public view returns (address, uint256) {
+    function getVault(uint256 vaultIndex) public view returns (Vault) {
         Vault memory vault = vaults[vaultIndex];
 
-        return (vault.owner, vault.balance);
+        return vault;
     }
 
     function getVaultsLength() public view returns (uint256) {
