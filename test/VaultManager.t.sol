@@ -37,7 +37,7 @@ contract VaultManagerTest is Test {
 
         vaultManager.deposit{value: 3 ether}(vaultIndex);
 
-        assertEq(vaultManager.getVault(vaultIndex).balance, 3);
+        assertEq(vaultManager.getVault(vaultIndex)[1], 3);
     }
 
     // Should take vault index and the amount, and withdraw this amount of money only if there is enough balance in the vault
