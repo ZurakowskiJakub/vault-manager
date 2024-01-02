@@ -27,7 +27,7 @@ contract VaultManager {
         return index;
     }
 
-    function deposit(uint256 vaultIndex) public payable onlyOwner(vaultIndex) {
+    function deposit(uint256 vaultIndex) public payable {
         vaults[vaultIndex].balance += msg.value;
 
         emit VaultDeposit(vaultIndex, msg.sender, msg.value);
