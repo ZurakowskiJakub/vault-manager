@@ -13,7 +13,7 @@ contract VaultManager {
     event VaultWithdraw(uint256 _id, address owner, uint256 amount);
 
     modifier onlyOwner(uint256 vaultIndex) {
-        if (msg.sender != vaults(vaultIndex).owner) {
+        if (msg.sender != vaults[vaultIndex].owner) {
             revert("You are not the owner of this vault.");
         }
 
@@ -22,8 +22,7 @@ contract VaultManager {
     }
 
     function addVault() public returns (uint256) {
-        Vault memory newVault = Vault(msg.sender, 0 ether);
-        vaults.push(newVault);
+        vaults.push(Vault({owner: msg.sender, balance: 0 ether}));
         uint256 index = getVaultsLength() - 1;
 
         vaultsByOwner[msg.sender].push(index);
