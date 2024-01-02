@@ -14,9 +14,9 @@ contract VaultManagerTest is Test {
     function testAddVault() public {
         uint256 index = vaultManager.addVault();
 
-        assertEq(index == 0);
-        assertEq(vaultManager.vaults.length == 1);
-        assertEq(vaultManager.vaultsByOwner[msg.sender].length == 1);
+        assertEq(index, 0);
+        assertEq(vaultManager.vaults.length, 1);
+        assertEq(vaultManager.vaultsByOwner[msg.sender].length, 1);
     }
 
     // function testFuzz_SetNumber(uint256 x) public {
