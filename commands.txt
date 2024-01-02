@@ -1,0 +1,11 @@
+-- Get balance
+
+cast call 0x5FbDB2315678afecb367f032d93F642f64180aa3 "number()(uint256)" --rpc-rul local
+
+-- Set a number
+
+cast send 0x5FbDB2315678afecb367f032d93F642f64180aa3 "setNumber(uint256)(uint256)" 69 --from 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 --unlocked --rpc-url local
+
+-- Increment a number
+
+cast send 0x5FbDB2315678afecb367f032d93F642f64180aa3 "increment()()" --from 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 --unlocked --rpc-url local
