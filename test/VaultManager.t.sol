@@ -45,6 +45,7 @@ contract VaultManagerTest is Test {
         uint256 vaultIndex = vaultManager.addVault();
 
         (address add, uint256 bal) = vaultManager.vaults(0);
+        console2.log(_user);
         console2.log(add);
         console2.log(bal);
 
