@@ -21,10 +21,14 @@ contract VaultManager {
         vaults.push(newVault);
 
         vaultsByOwner[msg.sender].push(vaultIndex);
+
+        emit VaultAdded(vaultIndex, msg.sender);
     }
 
     function deposit(uint256 vaultIndex) public payable onlyOwner(vaultIndex) {
         vaults[vaultIndex].balance += msg.value;
+
+        emit VaultDeposit(vaultIndex, msg.sender, msg.value);
     }
 
     function withdraw(
@@ -35,6 +39,8 @@ contract VaultManager {
         to.transfer(amount);
 
         vaults[vaultIndex].balance -= amount;
+
+        emit VaultWithdraw(vaultIndex, msg.sender, amount);
     }
 
     function getVault(
