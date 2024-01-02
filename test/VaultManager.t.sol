@@ -37,7 +37,11 @@ contract VaultManagerTest is Test {
 
         vaultManager.deposit{value: 3 ether}(vaultIndex);
 
+        console.log("Deposited");
+
         (address _addrs, uint256 balance) = vaultManager.getVault(vaultIndex);
+        console.log("Got the vault");
+        console.log("Balance: " + balance);
         assertEq(balance, 3);
     }
 
