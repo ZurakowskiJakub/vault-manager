@@ -37,6 +37,12 @@ contract VaultManager {
         uint256 vaultIndex,
         uint256 amount
     ) public onlyOwner(vaultIndex) {
+        if (vaults[vaultIndex].balance < amount) {
+            revert(
+                "You do not have sufficient balance to make this withdrawl."
+            );
+        }
+
         address payable to = payable(msg.sender);
         to.transfer(amount);
 
@@ -49,6 +55,7 @@ contract VaultManager {
         uint256 vaultIndex
     ) public view returns (address, uint256) {
         Vault memory vault = vaults[vaultIndex];
+
         return (vault.owner, vault.balance);
     }
 

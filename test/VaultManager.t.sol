@@ -14,7 +14,19 @@ contract VaultManagerTest is Test {
 
     // Should create a new vault and return its index
     function testAddVault() public {
-        assert(true);
+        uint256 vaultIndex = vaultManager.addVault();
+
+        assertEq(vaultIndex, 0);
+    }
+
+    // Should create a new vaults and return their index, last index should match
+    function testAddMultipleVault() public {
+        vaultManager.addVault();
+        vaultManager.addVault();
+        vaultManager.addVault();
+        uint256 vaultIndex = vaultManager.addVault();
+
+        assertEq(vaultIndex, 3);
     }
 
     // Should take a vault index and store the provided balance there
@@ -27,7 +39,6 @@ contract VaultManagerTest is Test {
         assert(true);
     }
 
-    // TODO
     // Should take vault index and the amount, and throw an error if there isn't enough funds in the account
     function testWithdrawNoBalance() public {
         assert(true);
