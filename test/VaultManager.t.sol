@@ -8,6 +8,10 @@ import {Vault} from "../src/Vault.sol";
 contract VaultManagerTest is Test {
     VaultManager public vaultManager;
 
+    function _send(uint256 amountEth) private {
+        (bool ok, ) = address(vaultManager).call{value: amount}("");
+    }
+
     function setUp() public {
         vaultManager = new VaultManager();
     }
@@ -30,8 +34,14 @@ contract VaultManagerTest is Test {
     }
 
     // Should take a vault index and store the provided balance there
-    function testDeposit() public {
-        assert(true);
+    function testDeposit(address user) public {
+        vm.hoax(user, 123);
+
+        uint256 vaultIndex = vaultManager.addVault();
+
+        vaultManager.deposit{value: 3}(vaultIndex);
+
+        assertEq(vaultManager.vaults[vaultIndex].balance, 3);
     }
 
     // Should take vault index and the amount, and withdraw this amount of money only if there is enough balance in the vault
