@@ -45,7 +45,9 @@ contract VaultManagerTest is Test {
         uint256 vaultIndex = vaultManager.addVault();
         console2.log(_user);
         console2.log(vaultIndex);
-        console2.log(vaultManager.getVault(0));
+        (address owner, uint256 balance) = vaultManager.getVault(0);
+        console2.log(owner);
+        console2.log(balance);
 
         vaultManager.deposit{value: 4 ether}(vaultIndex);
 
