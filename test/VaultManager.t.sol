@@ -40,7 +40,7 @@ contract VaultManagerTest is Test {
 
     // TODO
     // Should return an error if the vault doesn't exist
-    function testGetVault() public {
+    function testGetVaultNotFound() public {
         assert(true);
     }
 
