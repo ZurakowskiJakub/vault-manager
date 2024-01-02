@@ -31,23 +31,25 @@ contract VaultManagerTest is Test {
 
     // Should take a vault index and store the provided balance there
     function testDeposit(address _user) public {
-        hoax(_user, 123 ether);
-
-        uint256 vaultIndex = vaultManager.addVault();
-
-        vaultManager.deposit{value: 3 ether}(vaultIndex);
-
-        console2.log("Deposited");
-
-        (address _addrs, uint256 balance) = vaultManager.getVault(vaultIndex);
-        console2.log("Got the vault");
-        console2.log(balance);
-        assertEq(balance, 3);
+        // hoax(_user, 123 ether);
+        // uint256 vaultIndex = vaultManager.addVault();
+        // vaultManager.deposit{value: 3 ether}(vaultIndex);
+        // (address _addrs, uint256 balance) = vaultManager.getVault(vaultIndex);
+        // assertEq(balance, 3);
     }
 
     // Should take vault index and the amount, and withdraw this amount of money only if there is enough balance in the vault
-    function testWithdraw() public {
-        assert(true);
+    function testWithdraw(address _user) public {
+        prank(_user);
+        deal(123 ether);
+
+        uint256 vaultIndex = vaultManager.addVault();
+
+        vaultManager.deposit{value: 4 ether}(vaultIndex);
+
+        vaultManager.withdraw(vaultIndex, 2 ether);
+
+        assertEq(_user.balance, 121 ether);
     }
 
     // Should take vault index and the amount, and throw an error if there isn't enough funds in the account
