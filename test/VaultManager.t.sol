@@ -44,27 +44,12 @@ contract VaultManagerTest is Test {
 
         uint256 vaultIndex = vaultManager.addVault();
 
-        Vault[] memory v = vaultManager.vaults;
-        for (uint i = 0; i < v.length; i++) {
-            console2.log(v[i].owner);
-            console2.log(v[i].balance);
-        }
+        console2.log(vaultManager.vaults(i).owner);
+        console2.log(vaultManager.vaults(i).balance);
 
         vaultManager.deposit{value: 4 ether}(vaultIndex);
 
-        Vault[] memory v = vaultManager.vaults;
-        for (uint i = 0; i < v.length; i++) {
-            console2.log(v[i].owner);
-            console2.log(v[i].balance);
-        }
-
         vaultManager.withdraw(vaultIndex, 2 ether);
-
-        Vault[] memory v = vaultManager.vaults;
-        for (uint i = 0; i < v.length; i++) {
-            console2.log(v[i].owner);
-            console2.log(v[i].balance);
-        }
 
         assertEq(_user.balance, 121 ether);
     }
