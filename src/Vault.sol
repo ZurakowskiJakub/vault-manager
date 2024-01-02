@@ -3,6 +3,5 @@ pragma solidity ^0.8.13;
 
 struct Vault {
     address owner;
-    uint256 vaultIndex;
     uint256 balance;
 }

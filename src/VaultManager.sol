@@ -16,13 +16,15 @@ contract VaultManager {
         _;
     }
 
-    function addVault(uint256 vaultIndex) public {
-        Vault memory newVault = Vault(msg.sender, vaultIndex, 0);
+    function addVault() public returns (uint256) {
+        Vault memory newVault = Vault(msg.sender, 0);
         vaults.push(newVault);
+        uint256 index = vaults.length - 1;
 
-        vaultsByOwner[msg.sender].push(vaultIndex);
+        vaultsByOwner[msg.sender].push(index);
 
-        emit VaultAdded(vaultIndex, msg.sender);
+        emit VaultAdded(index, msg.sender);
+        return index;
     }
 
     function deposit(uint256 vaultIndex) public payable onlyOwner(vaultIndex) {
