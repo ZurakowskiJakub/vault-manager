@@ -31,13 +31,13 @@ contract VaultManagerTest is Test {
 
     // Should take a vault index and store the provided balance there
     function testDeposit(address user) public {
-        hoax(user, 123);
+        hoax(user, 123 ether);
 
         uint256 vaultIndex = vaultManager.addVault();
 
-        vaultManager.deposit{value: 3}(vaultIndex);
+        vaultManager.deposit{value: 3 ether}(vaultIndex);
 
-        assertEq(vaultManager.vaults[vaultIndex].balance, 3);
+        assertEq(vaultManager.getVault(vaultIndex).balance, 3);
     }
 
     // Should take vault index and the amount, and withdraw this amount of money only if there is enough balance in the vault
