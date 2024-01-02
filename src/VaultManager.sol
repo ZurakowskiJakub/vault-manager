@@ -2,6 +2,7 @@
 pragma solidity ^0.8.13;
 
 import {Vault} from "./Vault.sol";
+import {console2} from "forge-std/Test.sol";
 
 contract VaultManager {
     Vault[] public vaults;
@@ -12,6 +13,11 @@ contract VaultManager {
     event VaultWithdraw(uint256 _id, address owner, uint256 amount);
 
     modifier onlyOwner(uint256 vaultIndex) {
+        console2.log(vaultIndex);
+        console2.log(msg.sender);
+        console2.log(vaults);
+        console2.log(vaults[vaultIndex].owner);
+
         if (msg.sender != vaults[vaultIndex].owner) {
             revert("You are not the owner of this vault.");
         }
