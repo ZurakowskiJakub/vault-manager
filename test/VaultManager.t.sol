@@ -43,15 +43,16 @@ contract VaultManagerTest is Test {
         hoax(_user, 123 ether);
 
         uint256 vaultIndex = vaultManager.addVault();
-        console2.log(_user);
-        console2.log(vaultIndex);
-        (address owner, uint256 balance) = vaultManager.getVault(0);
-        console2.log(owner);
-        console2.log(balance);
+
+        console2.log(vaultManager.vaults);
 
         vaultManager.deposit{value: 4 ether}(vaultIndex);
 
+        console2.log(vaultManager.vaults);
+
         vaultManager.withdraw(vaultIndex, 2 ether);
+
+        console2.log(vaultManager.vaults);
 
         assertEq(_user.balance, 121 ether);
     }

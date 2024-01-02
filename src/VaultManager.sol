@@ -13,11 +13,6 @@ contract VaultManager {
     event VaultWithdraw(uint256 _id, address owner, uint256 amount);
 
     modifier onlyOwner(uint256 vaultIndex) {
-        console2.log(vaultIndex);
-        console2.log(msg.sender);
-        console2.log(vaults);
-        console2.log(vaults[vaultIndex].owner);
-
         if (msg.sender != vaults[vaultIndex].owner) {
             revert("You are not the owner of this vault.");
         }
