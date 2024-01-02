@@ -55,27 +55,27 @@ contract VaultManagerTest is Test {
     }
 
     // Should fire an event when a vault is added
-    function testVaultAdded() {
+    function testVaultAdded() public {
         assert(true);
     }
 
     // Should fire an event when a deposit is made into a vault
-    function testVaultDeposit() {
+    function testVaultDeposit() public {
         assert(true);
     }
 
     // Should fire an event when a withdrawl is made from a vault
-    function testVaultWithdrawl() {
+    function testVaultWithdrawl() public {
         assert(true);
     }
 
     // Should throw an error when not the account owner tries to access the vault
-    function testDepositOnlyOwner() {
+    function testDepositOnlyOwner() public {
         assert(true);
     }
 
     // Should throw an error when not the account owner tries to access the vault
-    function testWithdrawlOnlyOwner() {
+    function testWithdrawlOnlyOwner() public {
         assert(true);
     }
 }
