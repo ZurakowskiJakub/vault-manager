@@ -8,10 +8,6 @@ import {Vault} from "../src/Vault.sol";
 contract VaultManagerTest is Test {
     VaultManager public vaultManager;
 
-    function _send(uint256 amountEth) private {
-        (bool ok, ) = address(vaultManager).call{value: amount}("");
-    }
-
     function setUp() public {
         vaultManager = new VaultManager();
     }
