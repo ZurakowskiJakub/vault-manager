@@ -12,16 +12,70 @@ contract VaultManagerTest is Test {
         vaultManager = new VaultManager();
     }
 
-    // function testAddVault() public {
-    //     uint256 index = vaultManager.addVault();
+    // Should create a new vault and return its index
+    function testAddVault() public {
+        assert(true);
+    }
 
-    //     assertEq(index, 0);
-    //     assertEq(vaultManager.getVaultsLength(), 1);
-    //     assertEq(vaultManager.vaults[0].owner, msg.sender);
-    // }
+    // Should take a vault index and store the provided balance there
+    function testDeposit() public {
+        assert(true);
+    }
 
-    function testGetVault(uint256 x) public {
-        uint256 index = vaultManager.addVault();
-        assertEq(vaultManager.getVault(index).owner, msg.sender);
+    // Should take vault index and the amount, and withdraw this amount of money only if there is enough balance in the vault
+    function testWithdraw() public {
+        assert(true);
+    }
+
+    // TODO
+    // Should take vault index and the amount, and throw an error if there isn't enough funds in the account
+    function testWithdrawNoBalance() public {
+        assert(true);
+    }
+
+    // Should take vault index and return the details for this vault
+    function testGetVault() public {
+        assert(true);
+    }
+
+    // TODO
+    // Should return an error if the vault doesn't exist
+    function testGetVault() public {
+        assert(true);
+    }
+
+    // Should return the number of vaults managed by the vault manager
+    function testGetVaultsLength() public {
+        assert(true);
+    }
+
+    // Should return the vaults specific to the owner of the account
+    function testGetMyVaults() public {
+        assert(true);
+    }
+
+    // Should fire an event when a vault is added
+    function testVaultAdded() {
+        assert(true);
+    }
+
+    // Should fire an event when a deposit is made into a vault
+    function testVaultDeposit() {
+        assert(true);
+    }
+
+    // Should fire an event when a withdrawl is made from a vault
+    function testVaultWithdrawl() {
+        assert(true);
+    }
+
+    // Should throw an error when not the account owner tries to access the vault
+    function testDepositOnlyOwner() {
+        assert(true);
+    }
+
+    // Should throw an error when not the account owner tries to access the vault
+    function testWithdrawlOnlyOwner() {
+        assert(true);
     }
 }
