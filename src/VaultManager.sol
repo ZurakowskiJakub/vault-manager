@@ -19,7 +19,7 @@ contract VaultManager {
     function addVault() public returns (uint256) {
         Vault memory newVault = Vault(msg.sender, 0);
         vaults.push(newVault);
-        uint256 index = getVaultsLength();
+        uint256 index = getVaultsLength() - 1;
 
         vaultsByOwner[msg.sender].push(index);
 
