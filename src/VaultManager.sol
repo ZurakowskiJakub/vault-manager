@@ -12,7 +12,13 @@ contract VaultManager {
     event VaultDeposit(uint256 _id, address owner, uint256 amount);
     event VaultWithdraw(uint256 _id, address owner, uint256 amount);
 
+    event Log(string msg);
+
     modifier onlyOwner(uint256 vaultIndex) {
+        emit Log(vaultIndex);
+        emit Log(msg.sender);
+        emit Log(getVault(vaultIndex));
+        emit Log(getVault(vaultIndex).owner);
         if (msg.sender != getVault(vaultIndex).owner) {
             revert("You are not the owner of this vault.");
         }
