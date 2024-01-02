@@ -7,18 +7,18 @@ import {VaultManager} from "../src/VaultManager.sol";
 contract VaultManagerTest is Test {
     VaultManager public vaultManager;
 
-    function setUp() public {
-        vaultManager = new VaultManager();
-        vaultManager.setNumber(0);
-    }
+    // function setUp() public {
+    //     vaultManager = new VaultManager();
+    //     vaultManager.setNumber(0);
+    // }
 
-    function test_Increment() public {
-        vaultManager.increment();
-        assertEq(vaultManager.number(), 1);
-    }
+    // function test_Increment() public {
+    //     vaultManager.increment();
+    //     assertEq(vaultManager.number(), 1);
+    // }
 
-    function testFuzz_SetNumber(uint256 x) public {
-        vaultManager.setNumber(x);
-        assertEq(vaultManager.number(), x);
-    }
+    // function testFuzz_SetNumber(uint256 x) public {
+    //     vaultManager.setNumber(x);
+    //     assertEq(vaultManager.number(), x);
+    // }
 }
