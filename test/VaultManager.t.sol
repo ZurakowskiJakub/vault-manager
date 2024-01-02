@@ -31,7 +31,7 @@ contract VaultManagerTest is Test {
 
     // Should take a vault index and store the provided balance there
     function testDeposit(address user) public {
-        vm.hoax(user, 123);
+        hoax(user, 123);
 
         uint256 vaultIndex = vaultManager.addVault();
 
