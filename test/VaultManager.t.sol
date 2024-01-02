@@ -41,7 +41,7 @@ contract VaultManagerTest is Test {
 
         (address _addrs, uint256 balance) = vaultManager.getVault(vaultIndex);
         console2.log("Got the vault");
-        console2.log("Balance: " + balance);
+        console2.log(balance);
         assertEq(balance, 3);
     }
 
