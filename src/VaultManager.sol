@@ -12,10 +12,9 @@ contract VaultManager {
     event VaultWithdraw(uint256 _id, address owner, uint256 amount);
 
     modifier onlyOwner(uint256 vaultIndex) {
-        require(
-            msg.sender == vaults[vaultIndex].owner,
-            "You are not the owner of this vault."
-        );
+        (address owner, uint256 balance) = getVault(vaultIndex);
+
+        require(msg.sender == owner, "You are not the owner of this vault.");
         _;
     }
 
