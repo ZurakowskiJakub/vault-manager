@@ -11,16 +11,16 @@ contract VaultManagerTest is Test {
         vaultManager = new VaultManager();
     }
 
-    function testAddVault() public {
-        uint256 index = vaultManager.addVault();
+    // function testAddVault() public {
+    //     uint256 index = vaultManager.addVault();
 
-        assertEq(index, 0);
-        assertEq(vaultManager.getVaultsLength(), 1);
-        assertEq(vaultManager.vaults[0].owner, msg.sender);
-    }
-
-    // function testFuzz_SetNumber(uint256 x) public {
-    //     vaultManager.setNumber(x);
-    //     assertEq(vaultManager.number(), x);
+    //     assertEq(index, 0);
+    //     assertEq(vaultManager.getVaultsLength(), 1);
+    //     assertEq(vaultManager.vaults[0].owner, msg.sender);
     // }
+
+    function testGetVault(uint256 x) public {
+        uint256 index = vaultManager.addVault();
+        assertEq(vaultManager.getVault(index), Vault(msg.sender, 0));
+    }
 }
