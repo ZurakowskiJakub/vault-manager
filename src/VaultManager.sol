@@ -55,7 +55,7 @@ contract VaultManager {
         emit VaultWithdraw(vaultIndex, msg.sender, amount);
     }
 
-    function getVault(uint256 vaultIndex) public view returns (Vault) {
+    function getVault(uint256 vaultIndex) public view returns (Vault memory) {
         Vault memory vault = vaults[vaultIndex];
 
         return vault;
