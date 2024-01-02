@@ -37,7 +37,7 @@ contract VaultManagerTest is Test {
 
         vaultManager.deposit{value: 3 ether}(vaultIndex);
 
-        (address _, uint256 balance) = vaultManager.getVault(vaultIndex);
+        (address _addrs, uint256 balance) = vaultManager.getVault(vaultIndex);
         assertEq(balance, 3);
     }
 
