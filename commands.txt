@@ -4,12 +4,12 @@ forge script script/VaultManager.s.sol:VaultManagerScript --rpc-url local --broa
 
 -- Get balance
 
-cast call 0x8A791620dd6260079BF849Dc5567aDC3F2FdC318 --rpc-rul local "number()(uint256)" 
+cast call 0xA51c1fc2f0D1a1b8494Ed1FE312d7C3a78Ed91C0 --rpc-url local "number()(uint256)" 
 
 -- Set a number
 
-cast send 0x8A791620dd6260079BF849Dc5567aDC3F2FdC318 --from 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 --rpc-url local --unlocked \ "setNumber(uint256)(uint256)" 69
+cast send 0xA51c1fc2f0D1a1b8494Ed1FE312d7C3a78Ed91C0 --from 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 --rpc-url local --unlocked \ "setNumber(uint256)(uint256)" 69
 
 -- Increment a number
 
-cast send 0x8A791620dd6260079BF849Dc5567aDC3F2FdC318 --from 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 --rpc-url local --unlocked \ "increment()()"
+cast send 0xA51c1fc2f0D1a1b8494Ed1FE312d7C3a78Ed91C0 --from 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 --rpc-url local --unlocked \ "increment()()"
