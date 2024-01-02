@@ -40,8 +40,7 @@ contract VaultManagerTest is Test {
 
     // Should take vault index and the amount, and withdraw this amount of money only if there is enough balance in the vault
     function testWithdraw(address _user) public {
-        prank(_user);
-        deal(123 ether);
+        hoax(_user, 123 ether);
 
         uint256 vaultIndex = vaultManager.addVault();
 
