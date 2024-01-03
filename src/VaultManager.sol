@@ -2,7 +2,7 @@
 pragma solidity ^0.8.13;
 
 import {Vault} from "./Vault.sol";
-import {console2} from "forge-std/Test.sol";
+import "forge-std/console.sol";
 
 contract VaultManager {
     Vault[] public vaults;
@@ -12,18 +12,11 @@ contract VaultManager {
     event VaultDeposit(uint256 _id, address owner, uint256 amount);
     event VaultWithdraw(uint256 _id, address owner, uint256 amount);
 
-    event Log(string msg);
-
     modifier onlyOwner(uint256 vaultIndex) {
-        emit Log(vaultIndex);
-        emit Log(msg.sender);
-        emit Log(getVault(vaultIndex));
-        emit Log(getVault(vaultIndex).owner);
-        if (msg.sender != getVault(vaultIndex).owner) {
-            revert("You are not the owner of this vault.");
-        }
-
-        // require(msg.sender == owner, "You are not the owner of this vault.");
+        require(
+            msg.sender == vaults[vaultIndex].owner,
+            "You are not the owner of this vault."
+        );
         _;
     }
 
@@ -38,7 +31,7 @@ contract VaultManager {
     }
 
     function deposit(uint256 vaultIndex) public payable onlyOwner(vaultIndex) {
-        getVault(vaultIndex).balance += msg.value;
+        vaults[vaultIndex].balance += msg.value;
 
         emit VaultDeposit(vaultIndex, msg.sender, msg.value);
     }
@@ -56,7 +49,7 @@ contract VaultManager {
         address payable to = payable(msg.sender);
         to.transfer(amount);
 
-        getVault(vaultIndex).balance -= amount;
+        vaults[vaultIndex].balance -= amount;
 
         emit VaultWithdraw(vaultIndex, msg.sender, amount);
     }
